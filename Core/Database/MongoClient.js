@@ -12,7 +12,7 @@ export default class MongoDBClient extends DatabaseClient {
             this.connection = await this.client.connect();
             this.db = this.connection.db(process.env.MONGO_DB_NAME);
         } catch (err) {
-            console.error('Error connecting to Oracle:', err);
+            console.error('Error connecting to Mongo:', err);
         }
     }
 

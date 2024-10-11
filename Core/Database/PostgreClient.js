@@ -21,7 +21,7 @@ export default class PostgresClient extends DatabaseClient {
         try {
             this.connection = await this.pool.connect();
         } catch (err) {
-            console.error('Error connecting to Oracle:', err);
+            console.error('Error connecting to Postgres:', err);
         }
     }
 

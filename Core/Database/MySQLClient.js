@@ -7,12 +7,17 @@ dotenv.config();
 export default class MySQLClient extends DatabaseClient {
 
     async connect() {
-        this.connection = await mysql.createConnection({
-            host: process.env.MYSQL_DB_HOST,
-            user: process.env.MYSQL_DB_USER,
-            password: process.env.MYSQL_DB_PASSWORD,
-            database: process.env.MYSQL_DB_DATABASE,
-        });
+        try {
+            this.connection = await mysql.createConnection({
+                host: process.env.MYSQL_DB_HOST,
+                user: process.env.MYSQL_DB_USER,
+                password: process.env.MYSQL_DB_PASSWORD,
+                database: process.env.MYSQL_DB_DATABASE,
+            });
+            console.log('Connected to MySQL.');
+        } catch (err) {
+            console.error('Error connecting to MySQL:', err);
+        }
     }
 
     async executeQuery(query) {
